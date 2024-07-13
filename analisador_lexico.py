@@ -1,5 +1,14 @@
 import re
 
+"""
+Autores:
+Allan Cesar Ferreira (16200891)
+Gabriel Guglielmi Kirtschig (21200417)
+Kamilly Victória Ruseler (21204042)
+
+"""
+
+
 # Define padrões de token
 token_patterns = [
     (r'\bdef\b', 'DEF'),
@@ -30,7 +39,10 @@ token_patterns = [
 # Função de tokenização
 def tokenize(code):
     pos = 0
+    line = 1
+    col = 1
     tokens = []
+    
     while pos < len(code):
         match = None
         for token_pattern in token_patterns:
@@ -40,33 +52,18 @@ def tokenize(code):
             if match:
                 text = match.group(0)
                 if tag:
-                    token = (text, tag)
+                    token = (text, tag, line, col)
                     tokens.append(token)
                 break
         if not match:
-            raise SyntaxError(f"Illegal character: {code[pos]}")
+            raise SyntaxError(f"Caractere não reconhecido na linha {line}, coluna {col}: {code[pos]}")
         else:
+            newlines = text.count('\n')
+            if newlines > 0:
+                line += newlines
+                col = len(text) - text.rfind('\n')
+            else:
+                col += len(text)
             pos = match.end(0)
+    
     return tokens
-
-# Exemplo de código
-code = """
-def main() {
-    int x;
-    int y;
-    x = 5;
-    y = x + 10;
-    print y;
-    if (x < y) {
-        print x;
-    } else {
-        print y;
-    }
-    return;
-}
-"""
-
-# Tokenizando o código
-tokens = tokenize(code)
-for token in tokens:
-    print(token)
