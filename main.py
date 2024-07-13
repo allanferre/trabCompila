@@ -1,22 +1,20 @@
 import sys
-from analisador_lexico import tokenize
-from utils import list_txt_files
+from analisador_lexico import lex_analyser
+from utils import list_lsi_files
 sys.path.append("../..")
 
 """
 Autores:
-
 Allan Cesar Ferreira (16200891)
 Gabriel Guglielmi Kirtschig (21200417)
 Kamilly Victória Ruseler (21204042)
-
 """
 
 # Leitura do arquivo de dados
 def read_data():
     print("Lista de arquivos: ")
-    txt_files = list_txt_files()
-    for file in txt_files:
+    lsi_files = list_lsi_files()
+    for file in lsi_files:
         print(file)
     nome_arquivo = input(str('Digite o nome do arquivo de entrada, com a extensão: '))
     try:
@@ -32,7 +30,7 @@ def read_data():
 data = read_data()
 
 # Tokenização do código lido
-tokens = tokenize(data)
+tokens = lex_analyser(data)
 
 # Impressão dos tokens gerados
 for token in tokens:
