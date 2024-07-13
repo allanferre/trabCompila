@@ -1,0 +1,1134 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    DIVIDE
+    NOTEQ
+
+Grammar
+
+Rule 0     S' -> MAIN
+Rule 1     MAIN -> STMT
+Rule 2     MAIN -> FLIST
+Rule 3     MAIN -> <empty>
+Rule 4     FLIST -> FDEF FLIST
+Rule 5     FLIST -> FDEF
+Rule 6     FDEF -> def id LPAREN PARLIST RPAREN LBRACE STMTLIST RBRACE
+Rule 7     PARLIST -> int id COMMA PARLIST
+Rule 8     PARLIST -> int id
+Rule 9     STMT -> int id SEMICOLON
+Rule 10    STMT -> ATRIBST SEMICOLON
+Rule 11    STMT -> PRINTST SEMICOLON
+Rule 12    STMT -> RETURNST SEMICOLON
+Rule 13    STMT -> IFSTMT
+Rule 14    STMT -> LBRACE STMTLIST RBRACE
+Rule 15    STMT -> SEMICOLON
+Rule 16    ATRIBST -> id EQ EXPR
+Rule 17    ATRIBST -> id EQ FCALL
+Rule 18    FCALL -> id LPAREN PARLISTCALL RPAREN
+Rule 19    PARLISTCALL -> id COMMA PARLISTCALL
+Rule 20    PARLISTCALL -> id
+Rule 21    PRINTST -> print EXPR
+Rule 22    RETURNST -> return
+Rule 23    IFSTMT -> if LPAREN EXPR RPAREN STMT else STMT
+Rule 24    IFSTMT -> if LPAREN EXPR RPAREN STMT
+Rule 25    STMTLIST -> STMT STMTLIST
+Rule 26    STMTLIST -> STMT
+Rule 27    EXPR -> NUMEXPR LT NUMEXPR
+Rule 28    EXPR -> NUMEXPR GT NUMEXPR
+Rule 29    EXPR -> NUMEXPR EQ NUMEXPR
+Rule 30    EXPR -> NUMEXPR
+Rule 31    NUMEXPR -> NUMEXPR PLUS TERM
+Rule 32    NUMEXPR -> NUMEXPR MINUS TERM
+Rule 33    NUMEXPR -> TERM
+Rule 34    TERM -> TERM TIMES FACTOR
+Rule 35    TERM -> FACTOR
+Rule 36    FACTOR -> num
+Rule 37    FACTOR -> LPAREN NUMEXPR RPAREN
+Rule 38    FACTOR -> id
+
+Terminals, with rules where they appear
+
+COMMA                : 7 19
+DIVIDE               : 
+EQ                   : 16 17 29
+GT                   : 28
+LBRACE               : 6 14
+LPAREN               : 6 18 23 24 37
+LT                   : 27
+MINUS                : 32
+NOTEQ                : 
+PLUS                 : 31
+RBRACE               : 6 14
+RPAREN               : 6 18 23 24 37
+SEMICOLON            : 9 10 11 12 15
+TIMES                : 34
+def                  : 6
+else                 : 23
+error                : 
+id                   : 6 7 8 9 16 17 18 19 20 38
+if                   : 23 24
+int                  : 7 8 9
+num                  : 36
+print                : 21
+return               : 22
+
+Nonterminals, with rules where they appear
+
+ATRIBST              : 10
+EXPR                 : 16 21 23 24
+FACTOR               : 34 35
+FCALL                : 17
+FDEF                 : 4 5
+FLIST                : 2 4
+IFSTMT               : 13
+MAIN                 : 0
+NUMEXPR              : 27 27 28 28 29 29 30 31 32 37
+PARLIST              : 6 7
+PARLISTCALL          : 18 19
+PRINTST              : 11
+RETURNST             : 12
+STMT                 : 1 23 23 24 25 26
+STMTLIST             : 6 14 25
+TERM                 : 31 32 33 34
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . MAIN
+    (1) MAIN -> . STMT
+    (2) MAIN -> . FLIST
+    (3) MAIN -> .
+    (9) STMT -> . int id SEMICOLON
+    (10) STMT -> . ATRIBST SEMICOLON
+    (11) STMT -> . PRINTST SEMICOLON
+    (12) STMT -> . RETURNST SEMICOLON
+    (13) STMT -> . IFSTMT
+    (14) STMT -> . LBRACE STMTLIST RBRACE
+    (15) STMT -> . SEMICOLON
+    (4) FLIST -> . FDEF FLIST
+    (5) FLIST -> . FDEF
+    (16) ATRIBST -> . id EQ EXPR
+    (17) ATRIBST -> . id EQ FCALL
+    (21) PRINTST -> . print EXPR
+    (22) RETURNST -> . return
+    (23) IFSTMT -> . if LPAREN EXPR RPAREN STMT else STMT
+    (24) IFSTMT -> . if LPAREN EXPR RPAREN STMT
+    (6) FDEF -> . def id LPAREN PARLIST RPAREN LBRACE STMTLIST RBRACE
+
+    $end            reduce using rule 3 (MAIN -> .)
+    int             shift and go to state 4
+    LBRACE          shift and go to state 11
+    SEMICOLON       shift and go to state 6
+    id              shift and go to state 5
+    print           shift and go to state 13
+    return          shift and go to state 14
+    if              shift and go to state 15
+    def             shift and go to state 16
+
+    MAIN                           shift and go to state 1
+    STMT                           shift and go to state 2
+    FLIST                          shift and go to state 3
+    ATRIBST                        shift and go to state 7
+    PRINTST                        shift and go to state 8
+    RETURNST                       shift and go to state 9
+    IFSTMT                         shift and go to state 10
+    FDEF                           shift and go to state 12
+
+state 1
+
+    (0) S' -> MAIN .
+
+
+
+state 2
+
+    (1) MAIN -> STMT .
+
+    $end            reduce using rule 1 (MAIN -> STMT .)
+
+
+state 3
+
+    (2) MAIN -> FLIST .
+
+    $end            reduce using rule 2 (MAIN -> FLIST .)
+
+
+state 4
+
+    (9) STMT -> int . id SEMICOLON
+
+    id              shift and go to state 17
+
+
+state 5
+
+    (16) ATRIBST -> id . EQ EXPR
+    (17) ATRIBST -> id . EQ FCALL
+
+    EQ              shift and go to state 18
+
+
+state 6
+
+    (15) STMT -> SEMICOLON .
+
+    $end            reduce using rule 15 (STMT -> SEMICOLON .)
+    int             reduce using rule 15 (STMT -> SEMICOLON .)
+    LBRACE          reduce using rule 15 (STMT -> SEMICOLON .)
+    SEMICOLON       reduce using rule 15 (STMT -> SEMICOLON .)
+    id              reduce using rule 15 (STMT -> SEMICOLON .)
+    print           reduce using rule 15 (STMT -> SEMICOLON .)
+    return          reduce using rule 15 (STMT -> SEMICOLON .)
+    if              reduce using rule 15 (STMT -> SEMICOLON .)
+    RBRACE          reduce using rule 15 (STMT -> SEMICOLON .)
+    else            reduce using rule 15 (STMT -> SEMICOLON .)
+
+
+state 7
+
+    (10) STMT -> ATRIBST . SEMICOLON
+
+    SEMICOLON       shift and go to state 19
+
+
+state 8
+
+    (11) STMT -> PRINTST . SEMICOLON
+
+    SEMICOLON       shift and go to state 20
+
+
+state 9
+
+    (12) STMT -> RETURNST . SEMICOLON
+
+    SEMICOLON       shift and go to state 21
+
+
+state 10
+
+    (13) STMT -> IFSTMT .
+
+    $end            reduce using rule 13 (STMT -> IFSTMT .)
+    int             reduce using rule 13 (STMT -> IFSTMT .)
+    LBRACE          reduce using rule 13 (STMT -> IFSTMT .)
+    SEMICOLON       reduce using rule 13 (STMT -> IFSTMT .)
+    id              reduce using rule 13 (STMT -> IFSTMT .)
+    print           reduce using rule 13 (STMT -> IFSTMT .)
+    return          reduce using rule 13 (STMT -> IFSTMT .)
+    if              reduce using rule 13 (STMT -> IFSTMT .)
+    RBRACE          reduce using rule 13 (STMT -> IFSTMT .)
+    else            reduce using rule 13 (STMT -> IFSTMT .)
+
+
+state 11
+
+    (14) STMT -> LBRACE . STMTLIST RBRACE
+    (25) STMTLIST -> . STMT STMTLIST
+    (26) STMTLIST -> . STMT
+    (9) STMT -> . int id SEMICOLON
+    (10) STMT -> . ATRIBST SEMICOLON
+    (11) STMT -> . PRINTST SEMICOLON
+    (12) STMT -> . RETURNST SEMICOLON
+    (13) STMT -> . IFSTMT
+    (14) STMT -> . LBRACE STMTLIST RBRACE
+    (15) STMT -> . SEMICOLON
+    (16) ATRIBST -> . id EQ EXPR
+    (17) ATRIBST -> . id EQ FCALL
+    (21) PRINTST -> . print EXPR
+    (22) RETURNST -> . return
+    (23) IFSTMT -> . if LPAREN EXPR RPAREN STMT else STMT
+    (24) IFSTMT -> . if LPAREN EXPR RPAREN STMT
+
+    int             shift and go to state 4
+    LBRACE          shift and go to state 11
+    SEMICOLON       shift and go to state 6
+    id              shift and go to state 5
+    print           shift and go to state 13
+    return          shift and go to state 14
+    if              shift and go to state 15
+
+    STMTLIST                       shift and go to state 22
+    STMT                           shift and go to state 23
+    ATRIBST                        shift and go to state 7
+    PRINTST                        shift and go to state 8
+    RETURNST                       shift and go to state 9
+    IFSTMT                         shift and go to state 10
+
+state 12
+
+    (4) FLIST -> FDEF . FLIST
+    (5) FLIST -> FDEF .
+    (4) FLIST -> . FDEF FLIST
+    (5) FLIST -> . FDEF
+    (6) FDEF -> . def id LPAREN PARLIST RPAREN LBRACE STMTLIST RBRACE
+
+    $end            reduce using rule 5 (FLIST -> FDEF .)
+    def             shift and go to state 16
+
+    FDEF                           shift and go to state 12
+    FLIST                          shift and go to state 24
+
+state 13
+
+    (21) PRINTST -> print . EXPR
+    (27) EXPR -> . NUMEXPR LT NUMEXPR
+    (28) EXPR -> . NUMEXPR GT NUMEXPR
+    (29) EXPR -> . NUMEXPR EQ NUMEXPR
+    (30) EXPR -> . NUMEXPR
+    (31) NUMEXPR -> . NUMEXPR PLUS TERM
+    (32) NUMEXPR -> . NUMEXPR MINUS TERM
+    (33) NUMEXPR -> . TERM
+    (34) TERM -> . TERM TIMES FACTOR
+    (35) TERM -> . FACTOR
+    (36) FACTOR -> . num
+    (37) FACTOR -> . LPAREN NUMEXPR RPAREN
+    (38) FACTOR -> . id
+
+    num             shift and go to state 29
+    LPAREN          shift and go to state 30
+    id              shift and go to state 31
+
+    EXPR                           shift and go to state 25
+    NUMEXPR                        shift and go to state 26
+    TERM                           shift and go to state 27
+    FACTOR                         shift and go to state 28
+
+state 14
+
+    (22) RETURNST -> return .
+
+    SEMICOLON       reduce using rule 22 (RETURNST -> return .)
+
+
+state 15
+
+    (23) IFSTMT -> if . LPAREN EXPR RPAREN STMT else STMT
+    (24) IFSTMT -> if . LPAREN EXPR RPAREN STMT
+
+    LPAREN          shift and go to state 32
+
+
+state 16
+
+    (6) FDEF -> def . id LPAREN PARLIST RPAREN LBRACE STMTLIST RBRACE
+
+    id              shift and go to state 33
+
+
+state 17
+
+    (9) STMT -> int id . SEMICOLON
+
+    SEMICOLON       shift and go to state 34
+
+
+state 18
+
+    (16) ATRIBST -> id EQ . EXPR
+    (17) ATRIBST -> id EQ . FCALL
+    (27) EXPR -> . NUMEXPR LT NUMEXPR
+    (28) EXPR -> . NUMEXPR GT NUMEXPR
+    (29) EXPR -> . NUMEXPR EQ NUMEXPR
+    (30) EXPR -> . NUMEXPR
+    (18) FCALL -> . id LPAREN PARLISTCALL RPAREN
+    (31) NUMEXPR -> . NUMEXPR PLUS TERM
+    (32) NUMEXPR -> . NUMEXPR MINUS TERM
+    (33) NUMEXPR -> . TERM
+    (34) TERM -> . TERM TIMES FACTOR
+    (35) TERM -> . FACTOR
+    (36) FACTOR -> . num
+    (37) FACTOR -> . LPAREN NUMEXPR RPAREN
+    (38) FACTOR -> . id
+
+    id              shift and go to state 35
+    num             shift and go to state 29
+    LPAREN          shift and go to state 30
+
+    EXPR                           shift and go to state 36
+    FCALL                          shift and go to state 37
+    NUMEXPR                        shift and go to state 26
+    TERM                           shift and go to state 27
+    FACTOR                         shift and go to state 28
+
+state 19
+
+    (10) STMT -> ATRIBST SEMICOLON .
+
+    $end            reduce using rule 10 (STMT -> ATRIBST SEMICOLON .)
+    int             reduce using rule 10 (STMT -> ATRIBST SEMICOLON .)
+    LBRACE          reduce using rule 10 (STMT -> ATRIBST SEMICOLON .)
+    SEMICOLON       reduce using rule 10 (STMT -> ATRIBST SEMICOLON .)
+    id              reduce using rule 10 (STMT -> ATRIBST SEMICOLON .)
+    print           reduce using rule 10 (STMT -> ATRIBST SEMICOLON .)
+    return          reduce using rule 10 (STMT -> ATRIBST SEMICOLON .)
+    if              reduce using rule 10 (STMT -> ATRIBST SEMICOLON .)
+    RBRACE          reduce using rule 10 (STMT -> ATRIBST SEMICOLON .)
+    else            reduce using rule 10 (STMT -> ATRIBST SEMICOLON .)
+
+
+state 20
+
+    (11) STMT -> PRINTST SEMICOLON .
+
+    $end            reduce using rule 11 (STMT -> PRINTST SEMICOLON .)
+    int             reduce using rule 11 (STMT -> PRINTST SEMICOLON .)
+    LBRACE          reduce using rule 11 (STMT -> PRINTST SEMICOLON .)
+    SEMICOLON       reduce using rule 11 (STMT -> PRINTST SEMICOLON .)
+    id              reduce using rule 11 (STMT -> PRINTST SEMICOLON .)
+    print           reduce using rule 11 (STMT -> PRINTST SEMICOLON .)
+    return          reduce using rule 11 (STMT -> PRINTST SEMICOLON .)
+    if              reduce using rule 11 (STMT -> PRINTST SEMICOLON .)
+    RBRACE          reduce using rule 11 (STMT -> PRINTST SEMICOLON .)
+    else            reduce using rule 11 (STMT -> PRINTST SEMICOLON .)
+
+
+state 21
+
+    (12) STMT -> RETURNST SEMICOLON .
+
+    $end            reduce using rule 12 (STMT -> RETURNST SEMICOLON .)
+    int             reduce using rule 12 (STMT -> RETURNST SEMICOLON .)
+    LBRACE          reduce using rule 12 (STMT -> RETURNST SEMICOLON .)
+    SEMICOLON       reduce using rule 12 (STMT -> RETURNST SEMICOLON .)
+    id              reduce using rule 12 (STMT -> RETURNST SEMICOLON .)
+    print           reduce using rule 12 (STMT -> RETURNST SEMICOLON .)
+    return          reduce using rule 12 (STMT -> RETURNST SEMICOLON .)
+    if              reduce using rule 12 (STMT -> RETURNST SEMICOLON .)
+    RBRACE          reduce using rule 12 (STMT -> RETURNST SEMICOLON .)
+    else            reduce using rule 12 (STMT -> RETURNST SEMICOLON .)
+
+
+state 22
+
+    (14) STMT -> LBRACE STMTLIST . RBRACE
+
+    RBRACE          shift and go to state 38
+
+
+state 23
+
+    (25) STMTLIST -> STMT . STMTLIST
+    (26) STMTLIST -> STMT .
+    (25) STMTLIST -> . STMT STMTLIST
+    (26) STMTLIST -> . STMT
+    (9) STMT -> . int id SEMICOLON
+    (10) STMT -> . ATRIBST SEMICOLON
+    (11) STMT -> . PRINTST SEMICOLON
+    (12) STMT -> . RETURNST SEMICOLON
+    (13) STMT -> . IFSTMT
+    (14) STMT -> . LBRACE STMTLIST RBRACE
+    (15) STMT -> . SEMICOLON
+    (16) ATRIBST -> . id EQ EXPR
+    (17) ATRIBST -> . id EQ FCALL
+    (21) PRINTST -> . print EXPR
+    (22) RETURNST -> . return
+    (23) IFSTMT -> . if LPAREN EXPR RPAREN STMT else STMT
+    (24) IFSTMT -> . if LPAREN EXPR RPAREN STMT
+
+    RBRACE          reduce using rule 26 (STMTLIST -> STMT .)
+    int             shift and go to state 4
+    LBRACE          shift and go to state 11
+    SEMICOLON       shift and go to state 6
+    id              shift and go to state 5
+    print           shift and go to state 13
+    return          shift and go to state 14
+    if              shift and go to state 15
+
+    STMT                           shift and go to state 23
+    STMTLIST                       shift and go to state 39
+    ATRIBST                        shift and go to state 7
+    PRINTST                        shift and go to state 8
+    RETURNST                       shift and go to state 9
+    IFSTMT                         shift and go to state 10
+
+state 24
+
+    (4) FLIST -> FDEF FLIST .
+
+    $end            reduce using rule 4 (FLIST -> FDEF FLIST .)
+
+
+state 25
+
+    (21) PRINTST -> print EXPR .
+
+    SEMICOLON       reduce using rule 21 (PRINTST -> print EXPR .)
+
+
+state 26
+
+    (27) EXPR -> NUMEXPR . LT NUMEXPR
+    (28) EXPR -> NUMEXPR . GT NUMEXPR
+    (29) EXPR -> NUMEXPR . EQ NUMEXPR
+    (30) EXPR -> NUMEXPR .
+    (31) NUMEXPR -> NUMEXPR . PLUS TERM
+    (32) NUMEXPR -> NUMEXPR . MINUS TERM
+
+    LT              shift and go to state 40
+    GT              shift and go to state 41
+    EQ              shift and go to state 42
+    SEMICOLON       reduce using rule 30 (EXPR -> NUMEXPR .)
+    RPAREN          reduce using rule 30 (EXPR -> NUMEXPR .)
+    PLUS            shift and go to state 43
+    MINUS           shift and go to state 44
+
+
+state 27
+
+    (33) NUMEXPR -> TERM .
+    (34) TERM -> TERM . TIMES FACTOR
+
+    LT              reduce using rule 33 (NUMEXPR -> TERM .)
+    GT              reduce using rule 33 (NUMEXPR -> TERM .)
+    EQ              reduce using rule 33 (NUMEXPR -> TERM .)
+    PLUS            reduce using rule 33 (NUMEXPR -> TERM .)
+    MINUS           reduce using rule 33 (NUMEXPR -> TERM .)
+    SEMICOLON       reduce using rule 33 (NUMEXPR -> TERM .)
+    RPAREN          reduce using rule 33 (NUMEXPR -> TERM .)
+    TIMES           shift and go to state 45
+
+
+state 28
+
+    (35) TERM -> FACTOR .
+
+    TIMES           reduce using rule 35 (TERM -> FACTOR .)
+    LT              reduce using rule 35 (TERM -> FACTOR .)
+    GT              reduce using rule 35 (TERM -> FACTOR .)
+    EQ              reduce using rule 35 (TERM -> FACTOR .)
+    PLUS            reduce using rule 35 (TERM -> FACTOR .)
+    MINUS           reduce using rule 35 (TERM -> FACTOR .)
+    SEMICOLON       reduce using rule 35 (TERM -> FACTOR .)
+    RPAREN          reduce using rule 35 (TERM -> FACTOR .)
+
+
+state 29
+
+    (36) FACTOR -> num .
+
+    TIMES           reduce using rule 36 (FACTOR -> num .)
+    LT              reduce using rule 36 (FACTOR -> num .)
+    GT              reduce using rule 36 (FACTOR -> num .)
+    EQ              reduce using rule 36 (FACTOR -> num .)
+    PLUS            reduce using rule 36 (FACTOR -> num .)
+    MINUS           reduce using rule 36 (FACTOR -> num .)
+    SEMICOLON       reduce using rule 36 (FACTOR -> num .)
+    RPAREN          reduce using rule 36 (FACTOR -> num .)
+
+
+state 30
+
+    (37) FACTOR -> LPAREN . NUMEXPR RPAREN
+    (31) NUMEXPR -> . NUMEXPR PLUS TERM
+    (32) NUMEXPR -> . NUMEXPR MINUS TERM
+    (33) NUMEXPR -> . TERM
+    (34) TERM -> . TERM TIMES FACTOR
+    (35) TERM -> . FACTOR
+    (36) FACTOR -> . num
+    (37) FACTOR -> . LPAREN NUMEXPR RPAREN
+    (38) FACTOR -> . id
+
+    num             shift and go to state 29
+    LPAREN          shift and go to state 30
+    id              shift and go to state 31
+
+    NUMEXPR                        shift and go to state 46
+    TERM                           shift and go to state 27
+    FACTOR                         shift and go to state 28
+
+state 31
+
+    (38) FACTOR -> id .
+
+    TIMES           reduce using rule 38 (FACTOR -> id .)
+    LT              reduce using rule 38 (FACTOR -> id .)
+    GT              reduce using rule 38 (FACTOR -> id .)
+    EQ              reduce using rule 38 (FACTOR -> id .)
+    PLUS            reduce using rule 38 (FACTOR -> id .)
+    MINUS           reduce using rule 38 (FACTOR -> id .)
+    SEMICOLON       reduce using rule 38 (FACTOR -> id .)
+    RPAREN          reduce using rule 38 (FACTOR -> id .)
+
+
+state 32
+
+    (23) IFSTMT -> if LPAREN . EXPR RPAREN STMT else STMT
+    (24) IFSTMT -> if LPAREN . EXPR RPAREN STMT
+    (27) EXPR -> . NUMEXPR LT NUMEXPR
+    (28) EXPR -> . NUMEXPR GT NUMEXPR
+    (29) EXPR -> . NUMEXPR EQ NUMEXPR
+    (30) EXPR -> . NUMEXPR
+    (31) NUMEXPR -> . NUMEXPR PLUS TERM
+    (32) NUMEXPR -> . NUMEXPR MINUS TERM
+    (33) NUMEXPR -> . TERM
+    (34) TERM -> . TERM TIMES FACTOR
+    (35) TERM -> . FACTOR
+    (36) FACTOR -> . num
+    (37) FACTOR -> . LPAREN NUMEXPR RPAREN
+    (38) FACTOR -> . id
+
+    num             shift and go to state 29
+    LPAREN          shift and go to state 30
+    id              shift and go to state 31
+
+    EXPR                           shift and go to state 47
+    NUMEXPR                        shift and go to state 26
+    TERM                           shift and go to state 27
+    FACTOR                         shift and go to state 28
+
+state 33
+
+    (6) FDEF -> def id . LPAREN PARLIST RPAREN LBRACE STMTLIST RBRACE
+
+    LPAREN          shift and go to state 48
+
+
+state 34
+
+    (9) STMT -> int id SEMICOLON .
+
+    $end            reduce using rule 9 (STMT -> int id SEMICOLON .)
+    int             reduce using rule 9 (STMT -> int id SEMICOLON .)
+    LBRACE          reduce using rule 9 (STMT -> int id SEMICOLON .)
+    SEMICOLON       reduce using rule 9 (STMT -> int id SEMICOLON .)
+    id              reduce using rule 9 (STMT -> int id SEMICOLON .)
+    print           reduce using rule 9 (STMT -> int id SEMICOLON .)
+    return          reduce using rule 9 (STMT -> int id SEMICOLON .)
+    if              reduce using rule 9 (STMT -> int id SEMICOLON .)
+    RBRACE          reduce using rule 9 (STMT -> int id SEMICOLON .)
+    else            reduce using rule 9 (STMT -> int id SEMICOLON .)
+
+
+state 35
+
+    (18) FCALL -> id . LPAREN PARLISTCALL RPAREN
+    (38) FACTOR -> id .
+
+    LPAREN          shift and go to state 49
+    TIMES           reduce using rule 38 (FACTOR -> id .)
+    LT              reduce using rule 38 (FACTOR -> id .)
+    GT              reduce using rule 38 (FACTOR -> id .)
+    EQ              reduce using rule 38 (FACTOR -> id .)
+    PLUS            reduce using rule 38 (FACTOR -> id .)
+    MINUS           reduce using rule 38 (FACTOR -> id .)
+    SEMICOLON       reduce using rule 38 (FACTOR -> id .)
+
+
+state 36
+
+    (16) ATRIBST -> id EQ EXPR .
+
+    SEMICOLON       reduce using rule 16 (ATRIBST -> id EQ EXPR .)
+
+
+state 37
+
+    (17) ATRIBST -> id EQ FCALL .
+
+    SEMICOLON       reduce using rule 17 (ATRIBST -> id EQ FCALL .)
+
+
+state 38
+
+    (14) STMT -> LBRACE STMTLIST RBRACE .
+
+    $end            reduce using rule 14 (STMT -> LBRACE STMTLIST RBRACE .)
+    int             reduce using rule 14 (STMT -> LBRACE STMTLIST RBRACE .)
+    LBRACE          reduce using rule 14 (STMT -> LBRACE STMTLIST RBRACE .)
+    SEMICOLON       reduce using rule 14 (STMT -> LBRACE STMTLIST RBRACE .)
+    id              reduce using rule 14 (STMT -> LBRACE STMTLIST RBRACE .)
+    print           reduce using rule 14 (STMT -> LBRACE STMTLIST RBRACE .)
+    return          reduce using rule 14 (STMT -> LBRACE STMTLIST RBRACE .)
+    if              reduce using rule 14 (STMT -> LBRACE STMTLIST RBRACE .)
+    RBRACE          reduce using rule 14 (STMT -> LBRACE STMTLIST RBRACE .)
+    else            reduce using rule 14 (STMT -> LBRACE STMTLIST RBRACE .)
+
+
+state 39
+
+    (25) STMTLIST -> STMT STMTLIST .
+
+    RBRACE          reduce using rule 25 (STMTLIST -> STMT STMTLIST .)
+
+
+state 40
+
+    (27) EXPR -> NUMEXPR LT . NUMEXPR
+    (31) NUMEXPR -> . NUMEXPR PLUS TERM
+    (32) NUMEXPR -> . NUMEXPR MINUS TERM
+    (33) NUMEXPR -> . TERM
+    (34) TERM -> . TERM TIMES FACTOR
+    (35) TERM -> . FACTOR
+    (36) FACTOR -> . num
+    (37) FACTOR -> . LPAREN NUMEXPR RPAREN
+    (38) FACTOR -> . id
+
+    num             shift and go to state 29
+    LPAREN          shift and go to state 30
+    id              shift and go to state 31
+
+    NUMEXPR                        shift and go to state 50
+    TERM                           shift and go to state 27
+    FACTOR                         shift and go to state 28
+
+state 41
+
+    (28) EXPR -> NUMEXPR GT . NUMEXPR
+    (31) NUMEXPR -> . NUMEXPR PLUS TERM
+    (32) NUMEXPR -> . NUMEXPR MINUS TERM
+    (33) NUMEXPR -> . TERM
+    (34) TERM -> . TERM TIMES FACTOR
+    (35) TERM -> . FACTOR
+    (36) FACTOR -> . num
+    (37) FACTOR -> . LPAREN NUMEXPR RPAREN
+    (38) FACTOR -> . id
+
+    num             shift and go to state 29
+    LPAREN          shift and go to state 30
+    id              shift and go to state 31
+
+    NUMEXPR                        shift and go to state 51
+    TERM                           shift and go to state 27
+    FACTOR                         shift and go to state 28
+
+state 42
+
+    (29) EXPR -> NUMEXPR EQ . NUMEXPR
+    (31) NUMEXPR -> . NUMEXPR PLUS TERM
+    (32) NUMEXPR -> . NUMEXPR MINUS TERM
+    (33) NUMEXPR -> . TERM
+    (34) TERM -> . TERM TIMES FACTOR
+    (35) TERM -> . FACTOR
+    (36) FACTOR -> . num
+    (37) FACTOR -> . LPAREN NUMEXPR RPAREN
+    (38) FACTOR -> . id
+
+    num             shift and go to state 29
+    LPAREN          shift and go to state 30
+    id              shift and go to state 31
+
+    NUMEXPR                        shift and go to state 52
+    TERM                           shift and go to state 27
+    FACTOR                         shift and go to state 28
+
+state 43
+
+    (31) NUMEXPR -> NUMEXPR PLUS . TERM
+    (34) TERM -> . TERM TIMES FACTOR
+    (35) TERM -> . FACTOR
+    (36) FACTOR -> . num
+    (37) FACTOR -> . LPAREN NUMEXPR RPAREN
+    (38) FACTOR -> . id
+
+    num             shift and go to state 29
+    LPAREN          shift and go to state 30
+    id              shift and go to state 31
+
+    TERM                           shift and go to state 53
+    FACTOR                         shift and go to state 28
+
+state 44
+
+    (32) NUMEXPR -> NUMEXPR MINUS . TERM
+    (34) TERM -> . TERM TIMES FACTOR
+    (35) TERM -> . FACTOR
+    (36) FACTOR -> . num
+    (37) FACTOR -> . LPAREN NUMEXPR RPAREN
+    (38) FACTOR -> . id
+
+    num             shift and go to state 29
+    LPAREN          shift and go to state 30
+    id              shift and go to state 31
+
+    TERM                           shift and go to state 54
+    FACTOR                         shift and go to state 28
+
+state 45
+
+    (34) TERM -> TERM TIMES . FACTOR
+    (36) FACTOR -> . num
+    (37) FACTOR -> . LPAREN NUMEXPR RPAREN
+    (38) FACTOR -> . id
+
+    num             shift and go to state 29
+    LPAREN          shift and go to state 30
+    id              shift and go to state 31
+
+    FACTOR                         shift and go to state 55
+
+state 46
+
+    (37) FACTOR -> LPAREN NUMEXPR . RPAREN
+    (31) NUMEXPR -> NUMEXPR . PLUS TERM
+    (32) NUMEXPR -> NUMEXPR . MINUS TERM
+
+    RPAREN          shift and go to state 56
+    PLUS            shift and go to state 43
+    MINUS           shift and go to state 44
+
+
+state 47
+
+    (23) IFSTMT -> if LPAREN EXPR . RPAREN STMT else STMT
+    (24) IFSTMT -> if LPAREN EXPR . RPAREN STMT
+
+    RPAREN          shift and go to state 57
+
+
+state 48
+
+    (6) FDEF -> def id LPAREN . PARLIST RPAREN LBRACE STMTLIST RBRACE
+    (7) PARLIST -> . int id COMMA PARLIST
+    (8) PARLIST -> . int id
+
+    int             shift and go to state 59
+
+    PARLIST                        shift and go to state 58
+
+state 49
+
+    (18) FCALL -> id LPAREN . PARLISTCALL RPAREN
+    (19) PARLISTCALL -> . id COMMA PARLISTCALL
+    (20) PARLISTCALL -> . id
+
+    id              shift and go to state 60
+
+    PARLISTCALL                    shift and go to state 61
+
+state 50
+
+    (27) EXPR -> NUMEXPR LT NUMEXPR .
+    (31) NUMEXPR -> NUMEXPR . PLUS TERM
+    (32) NUMEXPR -> NUMEXPR . MINUS TERM
+
+    SEMICOLON       reduce using rule 27 (EXPR -> NUMEXPR LT NUMEXPR .)
+    RPAREN          reduce using rule 27 (EXPR -> NUMEXPR LT NUMEXPR .)
+    PLUS            shift and go to state 43
+    MINUS           shift and go to state 44
+
+
+state 51
+
+    (28) EXPR -> NUMEXPR GT NUMEXPR .
+    (31) NUMEXPR -> NUMEXPR . PLUS TERM
+    (32) NUMEXPR -> NUMEXPR . MINUS TERM
+
+    SEMICOLON       reduce using rule 28 (EXPR -> NUMEXPR GT NUMEXPR .)
+    RPAREN          reduce using rule 28 (EXPR -> NUMEXPR GT NUMEXPR .)
+    PLUS            shift and go to state 43
+    MINUS           shift and go to state 44
+
+
+state 52
+
+    (29) EXPR -> NUMEXPR EQ NUMEXPR .
+    (31) NUMEXPR -> NUMEXPR . PLUS TERM
+    (32) NUMEXPR -> NUMEXPR . MINUS TERM
+
+    SEMICOLON       reduce using rule 29 (EXPR -> NUMEXPR EQ NUMEXPR .)
+    RPAREN          reduce using rule 29 (EXPR -> NUMEXPR EQ NUMEXPR .)
+    PLUS            shift and go to state 43
+    MINUS           shift and go to state 44
+
+
+state 53
+
+    (31) NUMEXPR -> NUMEXPR PLUS TERM .
+    (34) TERM -> TERM . TIMES FACTOR
+
+    LT              reduce using rule 31 (NUMEXPR -> NUMEXPR PLUS TERM .)
+    GT              reduce using rule 31 (NUMEXPR -> NUMEXPR PLUS TERM .)
+    EQ              reduce using rule 31 (NUMEXPR -> NUMEXPR PLUS TERM .)
+    PLUS            reduce using rule 31 (NUMEXPR -> NUMEXPR PLUS TERM .)
+    MINUS           reduce using rule 31 (NUMEXPR -> NUMEXPR PLUS TERM .)
+    SEMICOLON       reduce using rule 31 (NUMEXPR -> NUMEXPR PLUS TERM .)
+    RPAREN          reduce using rule 31 (NUMEXPR -> NUMEXPR PLUS TERM .)
+    TIMES           shift and go to state 45
+
+
+state 54
+
+    (32) NUMEXPR -> NUMEXPR MINUS TERM .
+    (34) TERM -> TERM . TIMES FACTOR
+
+    LT              reduce using rule 32 (NUMEXPR -> NUMEXPR MINUS TERM .)
+    GT              reduce using rule 32 (NUMEXPR -> NUMEXPR MINUS TERM .)
+    EQ              reduce using rule 32 (NUMEXPR -> NUMEXPR MINUS TERM .)
+    PLUS            reduce using rule 32 (NUMEXPR -> NUMEXPR MINUS TERM .)
+    MINUS           reduce using rule 32 (NUMEXPR -> NUMEXPR MINUS TERM .)
+    SEMICOLON       reduce using rule 32 (NUMEXPR -> NUMEXPR MINUS TERM .)
+    RPAREN          reduce using rule 32 (NUMEXPR -> NUMEXPR MINUS TERM .)
+    TIMES           shift and go to state 45
+
+
+state 55
+
+    (34) TERM -> TERM TIMES FACTOR .
+
+    TIMES           reduce using rule 34 (TERM -> TERM TIMES FACTOR .)
+    LT              reduce using rule 34 (TERM -> TERM TIMES FACTOR .)
+    GT              reduce using rule 34 (TERM -> TERM TIMES FACTOR .)
+    EQ              reduce using rule 34 (TERM -> TERM TIMES FACTOR .)
+    PLUS            reduce using rule 34 (TERM -> TERM TIMES FACTOR .)
+    MINUS           reduce using rule 34 (TERM -> TERM TIMES FACTOR .)
+    SEMICOLON       reduce using rule 34 (TERM -> TERM TIMES FACTOR .)
+    RPAREN          reduce using rule 34 (TERM -> TERM TIMES FACTOR .)
+
+
+state 56
+
+    (37) FACTOR -> LPAREN NUMEXPR RPAREN .
+
+    TIMES           reduce using rule 37 (FACTOR -> LPAREN NUMEXPR RPAREN .)
+    LT              reduce using rule 37 (FACTOR -> LPAREN NUMEXPR RPAREN .)
+    GT              reduce using rule 37 (FACTOR -> LPAREN NUMEXPR RPAREN .)
+    EQ              reduce using rule 37 (FACTOR -> LPAREN NUMEXPR RPAREN .)
+    PLUS            reduce using rule 37 (FACTOR -> LPAREN NUMEXPR RPAREN .)
+    MINUS           reduce using rule 37 (FACTOR -> LPAREN NUMEXPR RPAREN .)
+    SEMICOLON       reduce using rule 37 (FACTOR -> LPAREN NUMEXPR RPAREN .)
+    RPAREN          reduce using rule 37 (FACTOR -> LPAREN NUMEXPR RPAREN .)
+
+
+state 57
+
+    (23) IFSTMT -> if LPAREN EXPR RPAREN . STMT else STMT
+    (24) IFSTMT -> if LPAREN EXPR RPAREN . STMT
+    (9) STMT -> . int id SEMICOLON
+    (10) STMT -> . ATRIBST SEMICOLON
+    (11) STMT -> . PRINTST SEMICOLON
+    (12) STMT -> . RETURNST SEMICOLON
+    (13) STMT -> . IFSTMT
+    (14) STMT -> . LBRACE STMTLIST RBRACE
+    (15) STMT -> . SEMICOLON
+    (16) ATRIBST -> . id EQ EXPR
+    (17) ATRIBST -> . id EQ FCALL
+    (21) PRINTST -> . print EXPR
+    (22) RETURNST -> . return
+    (23) IFSTMT -> . if LPAREN EXPR RPAREN STMT else STMT
+    (24) IFSTMT -> . if LPAREN EXPR RPAREN STMT
+
+    int             shift and go to state 4
+    LBRACE          shift and go to state 11
+    SEMICOLON       shift and go to state 6
+    id              shift and go to state 5
+    print           shift and go to state 13
+    return          shift and go to state 14
+    if              shift and go to state 15
+
+    STMT                           shift and go to state 62
+    ATRIBST                        shift and go to state 7
+    PRINTST                        shift and go to state 8
+    RETURNST                       shift and go to state 9
+    IFSTMT                         shift and go to state 10
+
+state 58
+
+    (6) FDEF -> def id LPAREN PARLIST . RPAREN LBRACE STMTLIST RBRACE
+
+    RPAREN          shift and go to state 63
+
+
+state 59
+
+    (7) PARLIST -> int . id COMMA PARLIST
+    (8) PARLIST -> int . id
+
+    id              shift and go to state 64
+
+
+state 60
+
+    (19) PARLISTCALL -> id . COMMA PARLISTCALL
+    (20) PARLISTCALL -> id .
+
+    COMMA           shift and go to state 65
+    RPAREN          reduce using rule 20 (PARLISTCALL -> id .)
+
+
+state 61
+
+    (18) FCALL -> id LPAREN PARLISTCALL . RPAREN
+
+    RPAREN          shift and go to state 66
+
+
+state 62
+
+    (23) IFSTMT -> if LPAREN EXPR RPAREN STMT . else STMT
+    (24) IFSTMT -> if LPAREN EXPR RPAREN STMT .
+
+  ! shift/reduce conflict for else resolved as shift
+    else            shift and go to state 67
+    $end            reduce using rule 24 (IFSTMT -> if LPAREN EXPR RPAREN STMT .)
+    int             reduce using rule 24 (IFSTMT -> if LPAREN EXPR RPAREN STMT .)
+    LBRACE          reduce using rule 24 (IFSTMT -> if LPAREN EXPR RPAREN STMT .)
+    SEMICOLON       reduce using rule 24 (IFSTMT -> if LPAREN EXPR RPAREN STMT .)
+    id              reduce using rule 24 (IFSTMT -> if LPAREN EXPR RPAREN STMT .)
+    print           reduce using rule 24 (IFSTMT -> if LPAREN EXPR RPAREN STMT .)
+    return          reduce using rule 24 (IFSTMT -> if LPAREN EXPR RPAREN STMT .)
+    if              reduce using rule 24 (IFSTMT -> if LPAREN EXPR RPAREN STMT .)
+    RBRACE          reduce using rule 24 (IFSTMT -> if LPAREN EXPR RPAREN STMT .)
+
+  ! else            [ reduce using rule 24 (IFSTMT -> if LPAREN EXPR RPAREN STMT .) ]
+
+
+state 63
+
+    (6) FDEF -> def id LPAREN PARLIST RPAREN . LBRACE STMTLIST RBRACE
+
+    LBRACE          shift and go to state 68
+
+
+state 64
+
+    (7) PARLIST -> int id . COMMA PARLIST
+    (8) PARLIST -> int id .
+
+    COMMA           shift and go to state 69
+    RPAREN          reduce using rule 8 (PARLIST -> int id .)
+
+
+state 65
+
+    (19) PARLISTCALL -> id COMMA . PARLISTCALL
+    (19) PARLISTCALL -> . id COMMA PARLISTCALL
+    (20) PARLISTCALL -> . id
+
+    id              shift and go to state 60
+
+    PARLISTCALL                    shift and go to state 70
+
+state 66
+
+    (18) FCALL -> id LPAREN PARLISTCALL RPAREN .
+
+    SEMICOLON       reduce using rule 18 (FCALL -> id LPAREN PARLISTCALL RPAREN .)
+
+
+state 67
+
+    (23) IFSTMT -> if LPAREN EXPR RPAREN STMT else . STMT
+    (9) STMT -> . int id SEMICOLON
+    (10) STMT -> . ATRIBST SEMICOLON
+    (11) STMT -> . PRINTST SEMICOLON
+    (12) STMT -> . RETURNST SEMICOLON
+    (13) STMT -> . IFSTMT
+    (14) STMT -> . LBRACE STMTLIST RBRACE
+    (15) STMT -> . SEMICOLON
+    (16) ATRIBST -> . id EQ EXPR
+    (17) ATRIBST -> . id EQ FCALL
+    (21) PRINTST -> . print EXPR
+    (22) RETURNST -> . return
+    (23) IFSTMT -> . if LPAREN EXPR RPAREN STMT else STMT
+    (24) IFSTMT -> . if LPAREN EXPR RPAREN STMT
+
+    int             shift and go to state 4
+    LBRACE          shift and go to state 11
+    SEMICOLON       shift and go to state 6
+    id              shift and go to state 5
+    print           shift and go to state 13
+    return          shift and go to state 14
+    if              shift and go to state 15
+
+    STMT                           shift and go to state 71
+    ATRIBST                        shift and go to state 7
+    PRINTST                        shift and go to state 8
+    RETURNST                       shift and go to state 9
+    IFSTMT                         shift and go to state 10
+
+state 68
+
+    (6) FDEF -> def id LPAREN PARLIST RPAREN LBRACE . STMTLIST RBRACE
+    (25) STMTLIST -> . STMT STMTLIST
+    (26) STMTLIST -> . STMT
+    (9) STMT -> . int id SEMICOLON
+    (10) STMT -> . ATRIBST SEMICOLON
+    (11) STMT -> . PRINTST SEMICOLON
+    (12) STMT -> . RETURNST SEMICOLON
+    (13) STMT -> . IFSTMT
+    (14) STMT -> . LBRACE STMTLIST RBRACE
+    (15) STMT -> . SEMICOLON
+    (16) ATRIBST -> . id EQ EXPR
+    (17) ATRIBST -> . id EQ FCALL
+    (21) PRINTST -> . print EXPR
+    (22) RETURNST -> . return
+    (23) IFSTMT -> . if LPAREN EXPR RPAREN STMT else STMT
+    (24) IFSTMT -> . if LPAREN EXPR RPAREN STMT
+
+    int             shift and go to state 4
+    LBRACE          shift and go to state 11
+    SEMICOLON       shift and go to state 6
+    id              shift and go to state 5
+    print           shift and go to state 13
+    return          shift and go to state 14
+    if              shift and go to state 15
+
+    STMTLIST                       shift and go to state 72
+    STMT                           shift and go to state 23
+    ATRIBST                        shift and go to state 7
+    PRINTST                        shift and go to state 8
+    RETURNST                       shift and go to state 9
+    IFSTMT                         shift and go to state 10
+
+state 69
+
+    (7) PARLIST -> int id COMMA . PARLIST
+    (7) PARLIST -> . int id COMMA PARLIST
+    (8) PARLIST -> . int id
+
+    int             shift and go to state 59
+
+    PARLIST                        shift and go to state 73
+
+state 70
+
+    (19) PARLISTCALL -> id COMMA PARLISTCALL .
+
+    RPAREN          reduce using rule 19 (PARLISTCALL -> id COMMA PARLISTCALL .)
+
+
+state 71
+
+    (23) IFSTMT -> if LPAREN EXPR RPAREN STMT else STMT .
+
+    $end            reduce using rule 23 (IFSTMT -> if LPAREN EXPR RPAREN STMT else STMT .)
+    int             reduce using rule 23 (IFSTMT -> if LPAREN EXPR RPAREN STMT else STMT .)
+    LBRACE          reduce using rule 23 (IFSTMT -> if LPAREN EXPR RPAREN STMT else STMT .)
+    SEMICOLON       reduce using rule 23 (IFSTMT -> if LPAREN EXPR RPAREN STMT else STMT .)
+    id              reduce using rule 23 (IFSTMT -> if LPAREN EXPR RPAREN STMT else STMT .)
+    print           reduce using rule 23 (IFSTMT -> if LPAREN EXPR RPAREN STMT else STMT .)
+    return          reduce using rule 23 (IFSTMT -> if LPAREN EXPR RPAREN STMT else STMT .)
+    if              reduce using rule 23 (IFSTMT -> if LPAREN EXPR RPAREN STMT else STMT .)
+    RBRACE          reduce using rule 23 (IFSTMT -> if LPAREN EXPR RPAREN STMT else STMT .)
+    else            reduce using rule 23 (IFSTMT -> if LPAREN EXPR RPAREN STMT else STMT .)
+
+
+state 72
+
+    (6) FDEF -> def id LPAREN PARLIST RPAREN LBRACE STMTLIST . RBRACE
+
+    RBRACE          shift and go to state 74
+
+
+state 73
+
+    (7) PARLIST -> int id COMMA PARLIST .
+
+    RPAREN          reduce using rule 7 (PARLIST -> int id COMMA PARLIST .)
+
+
+state 74
+
+    (6) FDEF -> def id LPAREN PARLIST RPAREN LBRACE STMTLIST RBRACE .
+
+    def             reduce using rule 6 (FDEF -> def id LPAREN PARLIST RPAREN LBRACE STMTLIST RBRACE .)
+    $end            reduce using rule 6 (FDEF -> def id LPAREN PARLIST RPAREN LBRACE STMTLIST RBRACE .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for else in state 62 resolved as shift

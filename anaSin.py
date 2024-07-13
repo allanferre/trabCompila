@@ -1,3 +1,5 @@
+
+
 # Este é um analisador descendente recursivo simples
 def parse(tokens, grammar):
     # Inicialize o índice do token
@@ -5,6 +7,7 @@ def parse(tokens, grammar):
 
     # Defina uma função para analisar um símbolo não terminal
     def parse_symbol(symbol):
+        #simboloComErro = ""
         nonlocal token_index
 
         # Se o símbolo é um símbolo terminal
@@ -14,11 +17,11 @@ def parse(tokens, grammar):
                 token_index += 1
                 return True
             else:
-                # if token_index < len(tokens):
-                #     print(f"Erro: esperava '{symbol}', obteve '{tokens[token_index]}'")
-                # else:
-                #     print(f"Erro: esperava '{symbol}', mas não há mais tokens")
-                return False
+                #   if token_index < len(tokens):
+                #       print(f"Erro: esperava '{symbol}', obteve '{tokens[token_index]}' da prod '{grammar[symbol]}'")
+                #   else:
+                #       print(f"Erro: esperava2 '{symbol}', mas não há mais tokens")
+                      return False
 
         # Se o símbolo é um símbolo não terminal
         else:
@@ -26,7 +29,10 @@ def parse(tokens, grammar):
             saved_token_index = token_index
 
             # Tente cada produção alternativa
+            
             for production in grammar[symbol]:
+                
+                simboloComErro = production
                 # Redefina o índice do token
                 token_index = saved_token_index
 
@@ -35,8 +41,10 @@ def parse(tokens, grammar):
                     return True
 
             # Se nenhuma produção teve sucesso, retorne False
-            return False
-
+            print("Análise terminou na produção: ")
+            print(simboloComErro[-1])
+            return False      
+        
     # Comece a análise a partir do símbolo inicial
     return parse_symbol('MAIN') and token_index == len(tokens)
 
@@ -61,12 +69,12 @@ grammar = {
 }
 
 # Defina a lista de tokens
-tokens = ["def", "id", "(", "int", "id", ")", "{", "int", "id", ";", "}"]
-tokens2 = ["def", "id"]
-
+tokens1 = ["def", "id", "(", "int", "id", ")", "{", "int", "id", ";", "}"]
+tokens2 = ["if", "(", "(", "int", "def", ")"]
 
 # Verifique se a lista de tokens pertence à gramática
-if parse(tokens, grammar):
-    print("A lista de tokens pertence à gramática.")
+if parse(tokens2, grammar):
+    print("YES! A lista de tokens pertence à gramática.")   
 else:
-    print("A lista de tokens não pertence à gramática.")
+    print("OPS! A lista de tokens não pertence à gramática.")
+
