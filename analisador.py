@@ -174,9 +174,14 @@ tokens3 = ['print', '(', 'var1', '+', 'var2', ')', ';']
 tokens4 = ['return', ';']
 tokens5 = ['func', '(', 'var1', ')', '{', 'var1', '=', '3', ';', '}']
 tokens6 = ['int', 'var', '=', 'func', '(', 'var1', ')', ';']
+tokens7 = ["def", "id", "(", "int", "id", ")", "{", "int", "id", ";", "}"]
+tokens8 = ['def', 'func', '(', 'int', 'var1', ',', 'int', 'var2', ')', '{', 'var1', '=', '5', ';', 'var2', '=', '3', ';', '}']
+tokens9 = ['if', '(', 'var1', '<', 'var2', ')', '{', 'var1', '=', 'var2', ';', '}']
+tokens10 = ['print', '(', 'var1', '+', 'var2', ')', ';']
+
 
 # Testando os exemplos
-examples = [tokens1, tokens2, tokens3, tokens4, tokens5, tokens6]
+examples = [tokens1, tokens2, tokens3, tokens4, tokens5, tokens6, tokens7, tokens8, tokens9, tokens10]
 for i, tokens in enumerate(examples, 1):
     print(f"Exemplo {i}:")
     try:
