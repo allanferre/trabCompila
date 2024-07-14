@@ -1,3 +1,4 @@
+import tabelaPreditiva as tabela
 # Este é um analisador descendente recursivo simples
 def parse(tokens, grammar):
     # Inicialize o índice do token
@@ -48,7 +49,8 @@ def parse(tokens, grammar):
     return parse_symbol('MAIN') and token_index == len(tokens)
 
 # Defina a gramática
-grammar = {
+grammar = tabela
+grammar1 = {
     'MAIN': [['STMT'], ['FLIST'], []],
     'FLIST': [['FDEF', 'FLIST'], ['FDEF']],
     'FDEF': [['def', 'id', '(', 'PARLIST', ')', '{', 'STMTLIST', '}']],

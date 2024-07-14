@@ -1,3 +1,4 @@
+
 table = [
 # 	(	)	*	"+"	,	-	;	<	"="	>	id	def	if	else	num	print	return	int	{	}	$		
 [None,	None,	None,	None,	None,	None,	None,	"STMT",	None,	None,	None,	"STMT",	"FLIST", "STMT", None,	None,	"STMT",	"STMT",	"STMT",	"STMT",	None,	"",],

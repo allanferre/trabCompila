@@ -1,26 +1,55 @@
 from lark import Lark, UnexpectedInput
-import tabelaPreditiva
+import tabelaPreditiva as tabela
+
+def map_grammar_to_matrix(tabela):
+    # Initialize an empty matrix
+    matrix = []
+
+    # Iterate over each row in the table
+    for row in tabela:
+        # Initialize an empty list for the current row in the matrix
+        matrix_row = []
+
+        # Iterate over each item in the row
+        for item in row:
+            # Append the item to the current row in the matrix
+            matrix_row.append(item)
+
+        # Append the current row to the matrix
+        matrix.append(matrix_row)
+
+    # Return the matrix
+    return matrix
 
 # Definindo a gramática
-grammar = tabelaPreditiva
-grammar1 = '''
-    start: MAIN
-    MAIN: STMT | FLIST | 
-    FLIST: FDEF FLIST | FDEF
-    FDEF: "def" "id" "(" PARLIST ")" "{" STMTLIST "}"
-    PARLIST: "int" "id" "," PARLIST | "int" "id" | 
-    STMT: "int" "id" ";" | ATRIBST ";" | PRINTST ";" | RETURNST ";" | IFSTMT | "{" STMTLIST "}" | ";"
-    ATRIBST: "id" "=" EXPR | "id" "=" FCALL
-    FCALL: "id" "(" PARLISTCALL ")"
-    PARLISTCALL: "id" "," PARLISTCALL | "id" | 
-    PRINTST: "print" EXPR
-    RETURNST: "return"
-    IFSTMT: "if" "(" EXPR ")" STMT "else" STMT | "if" "(" EXPR ")" STMT
-    STMTLIST: STMT STMTLIST | STMT
-    EXPR: NUMEXPR "<" NUMEXPR | NUMEXPR ">" NUMEXPR | NUMEXPR "==" NUMEXPR | NUMEXPR
-    NUMEXPR: NUMEXPR "+" TERM | NUMEXPR "-" TERM | TERM
-    TERM: TERM "*" FACTOR | FACTOR
-    FACTOR: "num" | "(" NUMEXPR ")" | "id"
+grammar = map_grammar_to_matrix(tabela)
+grammar1 = '''		
+[None,	None,	None,	None,	None,	None,	None,	"STMT",	None,	None,	None,	"STMT",	"FLIST", "STMT", None,	None,	"STMT",	"STMT",	"STMT",	"STMT",	None,	"",],
+[None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	"FDEF FLIST'",	None,	None,	None,	None,	None,	None,	None,	None,	None,],
+[None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	"FDEF",	None,	None,	None,	None,	None,	None,	None,	None,	"",	],
+[None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	"def ( PARLIST ) { STMLIST }",	None,	None,	None,	None,	None,	None,	None,	None,	None,],
+[None,	None,	"",	    None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	"int id PARLIST'",	None,	None,	None,],
+[None,	None,	"",	    None,	None,	", PARLIST",	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,],
+[None,	None,	None,	None,	None,	None,	None,	";",	None,	None,	None,	"ATRIBST ;",	None,	"IFSTMT",	None,	None,	"PRINTST ;"	"RETURNST ;",	"int id",	"{ STMLIST' }",	None,	None,],
+[None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	"id = ATRIBST'",None,	None,	None,	None,	None,	None,	None,	None,	None,	None,],
+[None,	"FACTOR TERM' NUMEXPR' EXPR'",	None,	None,	None,	None,	None,	None,	None,	None,	None,	"id TEST",	None,	None,	None,	"FACTOR TERM' NUMEXPR' EXPR'",	None,	None,	None,	None,	None,	None,],
+[None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	"print EXPR",	None,	None,	None,	None,	None,],
+[None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	"return",	None,	None,	None,	None,],
+[None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	"if ( EXPR ) STMT IFSTMT'",	None,	None,	None,	None,	None,	None,	None,	None,],
+[None,	None,	None,	None,	None,	None,	None,	"",	    None,	None,	None,	"",	    None,	"",	["", "else"],	None,	"",	    "",	    "",	    "",	    "",	    "",	],
+[None,	None,	None,	None,	None,	None,	None,	"STMT STMLIST'",None,	None,	None,	"STMT STMLIST'",	None,	"STMT STMLIST'",None,	None,	"STMT STMLIST'","STMT STMLIST'","STMT STMLIST'","STMT STMLIST'",None,None,],
+[None,	None,	None,	None,	None,	None,	None,	"STMLIST",	    None,	None,	None,	"STMLIST",	None,	"STMLIST",	None,	None,	"STMLIST",	"STMLIST",	"STMLIST",	"STMLIST",	"",	None,],
+[None,	"NUMEXPR EXPR'",None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	"NUMEXPR EXPR'",None,	None,	None,	None,	None,	None,],
+["== NUMEXPR",	None,	"",	None,	None,	None,	None,	"",	"< NUMEXPR",	None,	"> NUMEXPR",	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,],
+[None,	"TERM NUMEXPR'",	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	"TERM NUMEXPR'",	None,	None,	None,	None,	None,   None,],
+["",	None,	"",	None,	"+ TERM NUMEXPR'",	None,	"- TERM NUMEXPR'",	"",	"",	None,	"",	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,],
+[None,	"FACTOR TERM'",	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	"FACTOR TERM'",	None,	None,	None,	None,	None,None,],
+["",	None,	"",	"* FACTOR TERM'",	"",	None,	"",	"",	"",	None,	"",	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,],
+[None,	"( NUMEXPR )",	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	"num",	None,	None,	None,	None,	None,	None,],
+[None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	"id ( PARLISTCALL )",	None,	None,	None,	None,	None,	None,	None,	None,	None,   None,],
+["TERM' NUMEXPR' EXPR'",	"( PARLISTCALL )",	None,	"TERM' NUMEXPR' EXPR'",	"TERM' NUMEXPR' EXPR'",	None,	"TERM' NUMEXPR' EXPR'",	"TERM' NUMEXPR' EXPR'",	"TERM' NUMEXPR' EXPR'",	None,	"TERM' NUMEXPR' EXPR'",	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,],
+[None,	None,	"",	None,	None,	None,	None,	None,	None,	None,	None,	"id PARLISTCALL'",	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,],
+[None,	None,	"",	None,	None,	", PARLISTCALL",None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,],
     %import common.WS
     %ignore WS
 '''
