@@ -1,0 +1,21 @@
+grammar = [
+
+[	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	FLIST,	FLIST,	STMT,	None,	STMT,	STMT,	STMT,	STMT,	STMT,	None,	""	],
+[	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	FDEF,	None,	None,	None,	None,	None,	None,	None,	None,	None	],
+[	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	def,	None,	None,	None,	None,	None,	None,	None,	None,	None	],
+[	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	int,	None,	""	],
+[	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	ATRIBST, None,	if,	    None,	None,	PRINTST, RETURNST ATRIBST,	None,	None,	None	],
+[	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	id,	    None,	None,	None,	None,	None,	None,	None,	None,	None,	None	],
+[	None,	FCALL	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None	],
+[	None,	None,	"",	    None,	None,	None,	None,	None,	None,	None,	None,	id,	    None,	None,	None,	None,	None,	None,	None,	None,	None,	None	],
+[	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	print,	None,	None,	None,	None	],
+[	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	return,	None,	None,	None	],
+[	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	if,	    None,	None,	None,	None,	None,	None,	None	],
+[	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	STMT,	None,	None,	None,	None,	None,	None,	None,	STMT,	None,	""	],
+[	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	FACTOR,	None,	None,	None,	None,	FACTOR,	None,	None,	FACTOR,	None,	None	],
+[	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	FACTOR,	None,	None,	None,	None,	FACTOR,	None,	None,	FACTOR,	None,	None	],
+[	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	None,	FACTOR,	None,	None,	None,	None,	FACTOR,	None,	None,	FACTOR,	None,	None	],
+[	None,	FACTOR,	None,	None,	None,	None,	None,	None,	None,	None,	None,	id,	    None,	None,	None,	None,	None,	None,	None,	FACTOR,	None,	None	],
+
+
+]
