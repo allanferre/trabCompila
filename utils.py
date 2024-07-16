@@ -9,7 +9,7 @@ Kamilly Victória Ruseler (21204042)
 
 def list_lsi_files():
     """
-    Função complementar que lista todos os arquivos que terminam com .txt
+    Função complementar que lista todos os arquivos que terminam com .lsi
     e os ordenam de forma alfabética, para mostrar ao usuário as opções
     possíveis de teste.
     """
