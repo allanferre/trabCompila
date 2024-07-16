@@ -68,9 +68,8 @@ exemplos = [
     ["$","def", "id", "(", "int", "id", ")", "{", "int", "id", ";", "}"], # valido
     ["$","id", "=", "num", ";"], # valido
     ["$","print", "num", ";"], # valido
-    ["$", "def", "id", "(", "int", "id", ",", "int", "id", ")", "{", "id", "=", "id", "+", "id", ";", "id", "=", "id", "*", "id", ";", "return", "id", ";", "}"], #valido
+    ["$", "def", "id", "(", "int", "id", ",", "int", "id", ")", "{", "id", "=", "id", "+", "id", ";", "id", "=", "id", "*", "id", ";", "return", "id", ";", "}"], # valido
 ]
-
 
 for tokens in exemplos:
     result = parse(tokens)

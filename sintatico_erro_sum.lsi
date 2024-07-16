@@ -1,0 +1,28 @@
+int sum(int a, int b) {
+  int result;
+  result = a + b;
+
+  if (result > 100) {
+    print("Result is large");
+  }
+
+  return result;
+}
+
+int main() {
+  int x = 10;
+  int y = 20;
+  int total;
+  
+  total = sum(x, y);
+
+  print("Total sum is", total);
+  
+  if (total > 50) {
+    print("Total is greater than 50");
+  else {
+    print("Total is 50 or less");
+  }
+
+  return 0;
+}
