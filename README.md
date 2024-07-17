@@ -63,9 +63,15 @@ três arquivos .lsi com mais de 15 linhas, que contém tokens não reconhecidos 
 
 - **Arquivo de sucesso do analisador sintatico**:
 um arquivo com mais de 50 linhas, com um exemplo de sucesso para a nossa linguagem; demonstra o uso básico de funções, declaração e atribuição de variáveis
-    - sintatico_teste.lsi
+    - sucesso.lsi
       
 
 - **Arquivo com a definição dos analisadores**:
 um arquivo com mais definições/detalhes sobre lógica dos analisadores.
     - definicoes_analisadores.txt
+
+
+- **Arquivos para inserção de input**:
+  dois arquivos para editar os inputs e realizar testes.
+    - sintatico_teste.lsi
+    - lexico_teste.lsi
