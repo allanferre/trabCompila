@@ -1,0 +1,30 @@
+"""
+Autores:
+Allan Cesar Ferreira (16200891)
+Gabriel Guglielmi Kirtschig (21200417)
+Kamilly Victória Ruseler (21204042)
+"""
+
+int multiply(int a, int b) {
+  return a * b;
+}
+
+int main() {
+  int num1 = 5;
+  int num2 = 6;
+  int result;
+  
+  result = multiply(num1, num2);
+  
+  print("The result is", result);
+  
+  if (result > 20) {
+    print("Result is greater than 20");
+  } else {
+    print("Result is 20 or less");
+  }
+  
+  int unexpected = multiply(2, 3, 4);
+
+  return 0;
+}

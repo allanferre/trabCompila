@@ -1,5 +1,6 @@
 import sys
 from analisador_lexico import lex_analyser
+from analisador_sintatico import syn_analyser
 from utils import list_lsi_files
 sys.path.append("../..")
 
@@ -29,9 +30,10 @@ def read_data():
 # Leitura do código de um arquivo
 data = read_data()
 
-# Tokenização do código lido
+# Análise léxica do código lido
 tokens = lex_analyser(data)
+print(f"Lista de tokens gerada: {tokens}")
 
-# Impressão dos tokens gerados
-for token in tokens:
-    print(token)
+# Análise sintática da lista de tokens gerada
+result = syn_analyser(tokens)
+print(f"A lista de tokens {tokens} é válida de acordo com a gramática: {result}")
