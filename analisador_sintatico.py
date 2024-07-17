@@ -6,6 +6,8 @@ Kamilly Victória Ruseler (21204042)
 """
 
 # Tabela LL(1) revisada representada como um dicionário
+# Todas as produções que terminam em "...TAIL" e o "ELSEPART" foram adicionadas para cobrir mais cenários dos testes e pra ser fatorada em LL1
+# Exemplos de produções adicionadas na gramática: ELSEPART, NUMEXPRTAIL, TERMTAIL, PARLISTCALLTAIL, PARLISTTAIL.
 parse_table = {
     'MAIN': {'def': ['FLIST'], 'int': ['STMT'], 'id': ['STMT'], 'print': ['STMT'], 'return': ['STMT'], 'if': ['STMT'], '{': ['STMT'], ';': ['STMT'], '$': []},
     'FLIST': {'def': ['FDEF', 'FLIST'], '$': []},
