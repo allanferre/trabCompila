@@ -47,17 +47,17 @@ def syn_analyser(tokens):
                 if production:
                     stack.extend(reversed(production))
             else:
-                print(f"Error: unexpected token {current_token} at position {index}")
+                print(f"Erro: token inesperado {current_token} na posição {index}")
                 return False
         else:
             if top == current_token:
                 index += 1
             else:
-                print(f"Error: expected {top}, but found {current_token} at position {index}")
+                print(f"Erro: esperado {top}, porém encontrado {current_token} na posição {index}")
                 return False
     
     if index == len(tokens) - 1:
         return True
     else:
-        print("Error: tokens left in the input")
+        print("Erro: tokens restantes na entrada")
         return False

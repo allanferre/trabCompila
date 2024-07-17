@@ -1,0 +1,43 @@
+Definições dos Analisadores
+
+- Analisador Léxico
+
+- Analisador sintático
+
+    O código começa com a 'parse_table' que é a gramática usada para reconhecimento das listas
+de tokens avaliadas posteriormente. Em seguido temos a função 'syn_analyser' onde ocorre toda a
+analise dos tokens recebidos pela classe main e comparado com a gramática. 
+
+    Estrutura da função 'syn_analyser':
+
+1. `stack = ['MAIN', '$']`: Inicializa uma pilha com os tokens 'MAIN' e '$'.
+
+2. `tokens.append('$')`: Adiciona o token '$' ao final da lista de tokens.
+
+3. `while stack:`: Entra em um loop enquanto a pilha não estiver vazia.
+
+4. `top = stack.pop()`: Remove e retorna o último elemento da pilha.
+
+5. `current_token = tokens[index]`: Obtém o token atual da lista de tokens.
+
+6. `if top in parse_table:`: Verifica se o token do topo da pilha está na tabela de análise sintática.
+
+7. `if current_token in parse_table[top]:`: Se o token do topo da pilha estiver na tabela de análise sintática, 
+verifica se o token atual está na entrada correspondente da tabela de análise sintática.
+
+8. `production = parse_table[top][current_token]`: Obtém a produção da tabela de análise sintática para o token 
+do topo da pilha e o token atual.
+
+9. `stack.extend(reversed(production))`: Se a produção existir, adiciona os tokens da produção ao topo da pilha 
+na ordem inversa.
+
+10. `if top == current_token:`: Se o token do topo da pilha for igual ao token atual, incrementa o índice.
+
+11. `if index == len(tokens) - 1:`: Se o índice for igual ao número de tokens menos um, retorna True.
+
+12. `else:`: Se o índice não for igual ao número de tokens menos um, imprime uma mensagem de erro e retorna False.
+
+    Essencialmente, esta função implementa um analisador sintático descendente LL(1) que usa uma pilha e uma tabela 
+de análise sintática para determinar se uma lista de tokens pode ser analisada em uma gramática específica. Ela retorna 
+True se a análise for bem-sucedida e False caso contrário. Além disso, ela imprime mensagens de erro quando encontra 
+tokens inesperados ou ausentes. 
