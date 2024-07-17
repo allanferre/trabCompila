@@ -67,5 +67,5 @@ um arquivo com mais de 50 linhas, com um exemplo de sucesso para a nossa linguag
       
 
 - **Arquivo com a definição dos analisadores**:
-um arquivo com explicações mais definições/detalhes sobre lógica dos analisadores.
+um arquivo com mais definições/detalhes sobre lógica dos analisadores.
     - definicoes_analisadores.txt
