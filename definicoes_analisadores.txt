@@ -2,6 +2,50 @@ Definições dos Analisadores
 
 - Analisador Léxico
 
+    Analisador léxico, também conhecido como **lexer** ou **scanner**. Ele é usado para 
+dividir um código-fonte em uma lista de tokens, que são as unidades básicas de significado no código.
+
+    Estrutura da classe:
+
+1. `token_patterns`: Esta é uma lista de tuplas, onde cada tupla contém uma expressão regular 
+e um rótulo de token correspondente. As expressões regulares são usadas para reconhecer diferentes tipos 
+de tokens no código-fonte.
+
+2. `lex_analyser(code)`: Esta é a função principal que realiza a análise léxica. Ela recebe uma 
+string de código-fonte como entrada.
+
+3. `while position < len(code):`: Este é o loop principal que percorre cada caractere do código-fonte.
+
+4. `for token_pattern in token_patterns:`: Para cada caractere, ele verifica cada padrão de 
+token para ver se há uma correspondência.
+
+5. `regex = re.compile(pattern)`: Compila a expressão regular do padrão de token.
+
+6. `match = regex.match(code, position)`: Verifica se a expressão regular corresponde ao código 
+a partir da posição atual.
+
+7. `if match:`: Se houver uma correspondência, ele cria um token com o texto correspondente, 
+o rótulo do token e a posição atual no código (linha e coluna).
+
+8. `tokens.append(token)`: Adiciona o token à lista de tokens.
+
+9. `if not match:`: Se não houver uma correspondência, ele levanta um erro de sintaxe.
+
+10. `newlines = text.count('\n')`: Conta o número de novas linhas no texto correspondente.
+
+11. `line += newlines`: Atualiza o número da linha.
+
+12. `column = len(text) - text.rfind('\n')`: Atualiza o número da coluna.
+
+13. `position = match.end(0)`: Atualiza a posição para o final da correspondência.
+
+14. `return tokens`: Retorna a lista de tokens.
+
+    Em resumo, este código é usado para analisar um código-fonte e dividir-lo em uma lista de 
+tokens, que pode ser usada para análise sintática posterior. Cada token contém o texto 
+correspondente, o rótulo do token e a posição no código-fonte. Se ele encontra um caractere 
+que não corresponde a nenhum padrão de token, ele levanta um erro de sintaxe.
+
 - Analisador sintático
 
     O código começa com a 'parse_table' que é a gramática usada para reconhecimento das listas
