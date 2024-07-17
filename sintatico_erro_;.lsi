@@ -1,0 +1,17 @@
+def exemplo1(int a) {
+    int b
+    b = a + 10
+    if (b == 20) {
+        return(1)
+    } else {
+        return(0);
+    }
+
+    int c;
+    c = b + 1
+    if (c == 21) {
+        return(0)
+    }
+    print(c)
+    return c;
+}

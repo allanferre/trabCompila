@@ -1,27 +1,17 @@
-"""
-Autores:
-Allan Cesar Ferreira (16200891)
-Gabriel Guglielmi Kirtschig (21200417)
-Kamilly Victória Ruseler (21204042)
-"""
+def exemplo2(int a) {
+    int b;
+    b = a + 10;
+    int resto;
+    resto = b % 2;
+    print(resto);
 
-int add(int a, int b) {
-  int result = a + b;
-  return result;
-}
+    if (resto == 0) {
+        return(1);
+    } else {
+        return(0);
+    }
 
-int subtract(int a, int b) {
-  int result = a - b;
-  return result;
-}
-
-int main() {
-  int x = 10;
-  int y = 5;
-  int sum = add(x, y); 
-  int diff = substract(x, y); 
-  int product = x % y;
-  int quotient = x / 0;
-  print(sum, diff, product, quotient);
-  return 0;
+    int c;
+    c = b + 1;
+    print(c);
 }

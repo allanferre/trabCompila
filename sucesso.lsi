@@ -1,0 +1,64 @@
+def main(int a, int b) {
+    int soma;
+    int subtracao;
+    int multiplicacao;
+    int comparacao1;
+    int comparacao2;
+    int comparacao3;
+
+    a = 10;
+    b = 20;
+    soma = a + b;
+    print(soma);
+
+    if (soma == 30) {
+        return(1);
+    } else {
+        return(0);
+    }
+
+    subtracao = b - a;
+    print(subtracao);
+
+    if (subtracao == 10) {
+        return(1);
+    } else {
+        return(0);
+    }
+
+    multiplicacao = a * b;
+    print(multiplicacao);
+
+    if (multiplicacao == 200) {
+        return(1);
+    } else {
+        return(0);
+    }
+
+    comparacao1 = (a == b);
+    print(comparacao1);
+
+    if (comparacao1 == 0) {
+        return(1);
+    } else {
+        return(0);
+    }
+
+    comparacao2 = (a + 10 == b);
+    print(comparacao2);
+
+    if (comparacao2 == 1) {
+        return(1);
+    } else {
+        return(0);
+    }
+
+    comparacao3 = (b - 10 == a);
+    print(comparacao3);
+
+    if (comparacao3 == 1) {
+        return(1);
+    } else {
+        return(0);
+    }
+}

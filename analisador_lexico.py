@@ -39,7 +39,8 @@ def lex_analyser(code):
     position = 0
     line = 1
     column = 1
-    tokens = []
+    complete_tokens_list = []
+    tokens_list = ['$']
     
     while position < len(code):
         match = None
@@ -51,7 +52,13 @@ def lex_analyser(code):
                 text = match.group(0)
                 if tag:
                     token = (text, tag, line, column)
-                    tokens.append(token)
+                    complete_tokens_list.append(token)
+                    if tag == 'ID':
+                        tokens_list.append('id')
+                    elif tag == 'NUM':
+                        tokens_list.append('num')
+                    else:
+                        tokens_list.append(text)
                 break
         if not match:
             raise SyntaxError(f"Caractere não reconhecido na linha {line}, coluna {column}: {code[position]}")
@@ -64,4 +71,4 @@ def lex_analyser(code):
                 column += len(text)
             position = match.end(0)
     
-    return tokens
+    return tokens_list

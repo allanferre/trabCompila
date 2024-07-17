@@ -1,10 +1,7 @@
-def exemplo1(int a) {
+def exemplo2(int a) {
     int b;
-    int diferenca;
     b = a + 10;
-    diferenca = b;
-    if (b != 20) {
-        print diferenca;
+    if (b == 20) {
         return(1);
     } else {
         return(0);
@@ -13,5 +10,8 @@ def exemplo1(int a) {
     int c;
     c = b + 1;
     print(c);
-    return c;
-}
+
+    int y;
+    y = x + 2;
+    print(y);
+    return y;

@@ -1,0 +1,20 @@
+def exemplo3(int a, int b) {
+    int soma;
+    soma = a + b;
+    print(soma);
+
+    if (soma == 30 {
+        return(1);
+    } else {
+        return(0);
+    }
+
+    int c;
+    c = soma + 1;
+    if (soma == 31) {
+        return(0);
+    } else {
+        return(1);
+    }
+    print(c);
+}

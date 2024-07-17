@@ -1,35 +1,17 @@
-"""
-Autores:
-Allan Cesar Ferreira (16200891)
-Gabriel Guglielmi Kirtschig (21200417)
-Kamilly Victória Ruseler (21204042)
-"""
+def exemplo3(int a) {
+    int b;
+    b = a + 10;
+    int invertido;
+    invertido = ~b;
+    print(invertido);
 
-int factorial(int n) {
-  if (n == 0) {
-    return 1;
-  } else {
-    return n * factorial(n - 1);
-  }
-}
+    if (invertido == 11) {
+        return(1);
+    } else {
+        return(0);
+    }
 
-int fibonacci(int n) {
-  if (n <= 1) {
-    return n;
-  } else {
-    return fibonacci(n - 1) + fibonacci(n - 2);
-  }
-}
-
-int main() {
-  int num = 5;
-  int fact = factorial(num);
-  int fib = fibonacci(num);
-  print(fact, fib);
-
-  int result = fact + fib;
-  print(result)
-  ~
-
-  return 0;
+    int c;
+    c = b + 1;
+    print(c);
 }
