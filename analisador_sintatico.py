@@ -1,3 +1,10 @@
+"""
+Autores:
+Allan Cesar Ferreira (16200891)
+Gabriel Guglielmi Kirtschig (21200417)
+Kamilly Victória Ruseler (21204042)
+"""
+
 # Tabela LL(1) revisada representada como um dicionário
 parse_table = {
     'MAIN': {'def': ['FLIST'], 'int': ['STMT'], 'id': ['STMT'], 'print': ['STMT'], 'return': ['STMT'], 'if': ['STMT'], '{': ['STMT'], ';': ['STMT'], '$': []},
@@ -24,7 +31,8 @@ parse_table = {
     'FACTOR': {'id': ['id'], 'num': ['num'], '(': ['(', 'EXPR', ')']}
 }
 
-def parse(tokens):
+# Função de análise sintática
+def syn_analyser(tokens):
     stack = ['MAIN', '$']
     tokens.append('$')
     index = 0
@@ -53,24 +61,3 @@ def parse(tokens):
     else:
         print("Error: tokens left in the input")
         return False
-
-# Exemplos de tokens
-exemplos = [
-    ["$","def", "(", "int", "id", ")", "{", "int", "id", "=", "num", ";", "}"], # invalido
-    ["$","def", "(", "int", "id", ")", "{", "", "}"], # invalido 
-    ["$","int", "id", "=", "num", ";"], # invalido                                       
-    ["$","print", "id", ";"], # valido                                                  
-    ["$","def", "(", "int", ")", "{", "int", "id", "=", "num", ";", "}"], # invalido     
-    ["$","int", "id", "num", ";"], # invalido                                             
-    ["$","num"], # invalido                                             
-    ["$","return", ";"], # valido - verificar se pode ter variável depois do return de acordo com a gramática                                                 
-    ["$","def", "(", "int", "id", ")", "{", "id", "=", "num", ";", "}"], # invalido
-    ["$","def", "id", "(", "int", "id", ")", "{", "int", "id", ";", "}"], # valido
-    ["$","id", "=", "num", ";"], # valido
-    ["$","print", "num", ";"], # valido
-    ["$", "def", "id", "(", "int", "id", ",", "int", "id", ")", "{", "id", "=", "id", "+", "id", ";", "id", "=", "id", "*", "id", ";", "return", "id", ";", "}"], # valido
-]
-
-for tokens in exemplos:
-    result = parse(tokens)
-    print(f"A lista de tokens {tokens} é válida de acordo com a gramática: {result}")
