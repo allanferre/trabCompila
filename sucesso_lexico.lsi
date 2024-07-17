@@ -1,0 +1,103 @@
+def multiply(int A, int B)
+{
+    int result = A * B;
+    return result;
+}
+
+def divide(int A, int B)
+{
+    if (B == 0)
+    {
+        return 0;
+    }
+    else
+    {
+        int result = A / B;
+        return result;
+    }
+}
+
+def factorial(int n)
+{
+    if (n == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        int result = 1;
+        int i = 1;
+        while (i <= n)
+        {
+            result = result * i;
+            i = i + 1;
+        }
+        return result;
+    }
+}
+
+def fibonacci(int n)
+{
+    if (n <= 1)
+    {
+        return n;
+    }
+    else
+    {
+        int a = 0;
+        int b = 1;
+        int i = 2;
+        int result;
+        while (i <= n)
+        {
+            result = a + b;
+            a = b;
+            b = result;
+            i = i + 1;
+        }
+        return result;
+    }
+}
+
+def main()
+{
+    int choice;
+    int num1;
+    int num2;
+    int result;
+
+    choice = input();
+
+    if (choice == 1)
+    {
+        num1 = input();
+        num2 = input();
+        result = multiply(num1, num2);
+        print(result);
+    }
+    elif (choice == 2)
+    {
+        num1 = input();
+        num2 = input();
+        result = divide(num1, num2);
+        print(result);
+    }
+    elif (choice == 3)
+    {
+        num1 = input();
+        result = factorial(num1);
+        print(result);
+    }
+    elif (choice == 4)
+    {
+        num1 = input());
+        result = fibonacci(num1);
+        print(result);
+    }
+    else
+    {
+        print(1);
+    }
+
+    return;
+}
