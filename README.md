@@ -75,3 +75,11 @@ um arquivo com mais definições/detalhes sobre lógica dos analisadores.
   dois arquivos para editar os inputs e realizar testes.
     - sintatico_teste.lsi
     - lexico_teste.lsi
+
+
+- **Executando o projeto em ambiente Linuxt**:
+  dois arquivos para editar os inputs e realizar testes.
+    - abra o terminal
+    - navegue até o diretório onde o projeto se encontra
+    - se o ambiente não estiver com o python instalado vc pode rodar o comando 'sudo apt-get install python3'
+    - por fim, para executar o projeto basta rodar o arquivo main.py com o comando 'python main.py'
